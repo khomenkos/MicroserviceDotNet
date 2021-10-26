@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+   kubernetes.io/ingress.class: nginx
+   nginx.ingress.kubernetes.io/use-reget: 'true'
+spec:
+  rules:
+  - host: myservice.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /WeatherForecast
+        backend:
+          service:
+            name: ms1-service
+            port: 
+              number: 80
+      - pathType: Prefix
+        path: /WeatherForecast
+        backend:
+          service:
+            name: ms2-service
+            port: 
+              number: 80

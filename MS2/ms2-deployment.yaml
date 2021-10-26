@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms2-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms2-pod
+  template:
+    metadata:
+      labels:
+        app: ms2-pod
+    spec:
+      containers:
+      - name: ms2
+        image: ms2:latest
+        imagePullPolicy: Never
